@@ -110,7 +110,10 @@ const moveNewPage = (inputConfirm) => {
 const resetGame = (arrayResult, listArea, time, status) => {
   const newArray = Array.from(new Set(arrayResult));
   if (time > 0 || newArray.length === listArea.length) return;
-  if (time <= 0 && newArray.length !== listArea.length) {
+  if (
+    (time <= 0 && newArray.length !== listArea.length) ||
+    (time <= 0 && newArray.length === listArea.length)
+  ) {
     status.type = 'gameOver';
     const resetBtn = document.querySelector('.game__button');
     resetBtn.classList.add('show');
