@@ -99,7 +99,7 @@ const moveNewPage = (inputConfirm) => {
         const pathName = '/birthDay/index.html';
         const newUrl = hostName.concat(pathName);
         console.log(newUrl);
-        window.location.assign(pathName);
+        window.location.assign(newUrl);
       } else {
         document.querySelector('.game__win__desc').classList.add('show');
       }
