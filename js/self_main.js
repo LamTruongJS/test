@@ -95,7 +95,11 @@ const moveNewPage = (inputConfirm) => {
   inputConfirm.addEventListener('keydown', (e) => {
     if (e.which === 13) {
       if (inputConfirm.value === '1912') {
-        window.location.assign('http://127.0.0.1:5500/birthDay/index.html');
+        const hostName = window.location.host;
+        const pathName = '/birthDay/index.html';
+        const newUrl = hostName.concat(pathName);
+        console.log(newUrl);
+        window.location.assign(pathName);
       } else {
         document.querySelector('.game__win__desc').classList.add('show');
       }
@@ -161,7 +165,6 @@ const main = (listArea, time, arrayDone, arrayResult, arrayIndex, status) => {
 };
 
 const firstRun = () => {
-  console.log(window.location.pathname);
   let status = { type: 'play' };
   let time = 30;
   let arrayDone = [];

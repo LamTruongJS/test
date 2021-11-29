@@ -35,7 +35,10 @@
     <div id="canva">
       <canvas id="canvas"></canvas>
     </div>
-    <audio src="./music.mp3" autoplay controls hidden loop></audio>
+    <audio controls autoplay hidden loop>
+      <source src="./music.mp3" type="audio/ogg" />
+      <source src="./music.mp3" type="audio/wav" />
+    </audio>
     <script src="./main.js"></script>
   </body>
 </html>
