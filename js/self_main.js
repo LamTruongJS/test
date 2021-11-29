@@ -95,11 +95,8 @@ const moveNewPage = (inputConfirm) => {
   inputConfirm.addEventListener('keydown', (e) => {
     if (e.which === 13) {
       if (inputConfirm.value === '1912') {
-        const hostName = window.location.host;
         const pathName = '/birthDay/index.html';
-        const newUrl = hostName.concat(pathName);
-        console.log(newUrl);
-        window.location.assign(newUrl);
+        window.location.assign(pathName);
       } else {
         document.querySelector('.game__win__desc').classList.add('show');
       }
