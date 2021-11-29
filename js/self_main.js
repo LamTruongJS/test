@@ -17,6 +17,7 @@ const randomNumber = (first, second) => {
   }
   return arrayNumber;
 };
+
 const setColor = (listArea) => {
   let color = colors();
 
@@ -28,6 +29,7 @@ const setColor = (listArea) => {
     listArea[numberSit[i]].querySelector('.overlay').style.backgroundColor = color[index];
   }
 };
+
 const checkColorCommon = (arrayDone, arrayIndex, arrayResult) => {
   let result = false;
   if (arrayDone.length < 2) return false;
@@ -63,6 +65,7 @@ const playGame = (item, listArea, arrayDone, index, arrayIndex, arrayResult, tim
     if (arrayDone.length < 2) {
       arrayDone.push(item);
       arrayIndex.push(index);
+      isCommonColor = checkColorCommon(arrayDone, arrayIndex, arrayResult);
     } else {
       if (arrayIndex.indexOf(index) < 0) {
         arrayDone.push(item);
@@ -80,6 +83,7 @@ const playGame = (item, listArea, arrayDone, index, arrayIndex, arrayResult, tim
     }
   });
 };
+
 const checkWinGame = (arrayResult, listArea, time, intervalID) => {
   const newArray = Array.from(new Set(arrayResult));
   if (time > 0 && newArray.length === listArea.length) {
@@ -122,6 +126,7 @@ const resetGame = (arrayResult, listArea, time, status) => {
     });
   }
 };
+
 const handleResetGame = (arrayResult, listArea, time) => {
   for (let i = 0; i < listArea.length; i++) {
     listArea[i].classList.remove('active');
@@ -135,10 +140,9 @@ const timePlayGame = (arrayResult, listArea, time, status) => {
   document.querySelector('.game__timer').textContent = time;
   let intervalID = setInterval(() => {
     if (time >= 0) {
-      if (time < 10) time = '0' + time;
+      if (time < 10) time = '0' + (time - 1);
       document.querySelector('.game__timer').textContent = time;
       checkWinGame(arrayResult, listArea, time, intervalID);
-      resetGame(arrayResult, listArea, time, status);
     }
     time--;
     if (time < 0) {
@@ -147,9 +151,11 @@ const timePlayGame = (arrayResult, listArea, time, status) => {
     }
   }, 1000);
 };
+
 const checkTime = () => {
   return document.querySelector('.game__timer').textContent;
 };
+
 const setStatus = (status) => {
   const currentTime = checkTime();
   if (Number(currentTime) <= 0) {
@@ -157,6 +163,7 @@ const setStatus = (status) => {
   }
   return status.type;
 };
+
 const main = (listArea, time, arrayDone, arrayResult, arrayIndex, status) => {
   timePlayGame(arrayResult, listArea, time, status);
   for (let index = 0; index < listArea.length; index++) {
@@ -177,4 +184,5 @@ const firstRun = () => {
   main(listArea, time, arrayDone, arrayResult, arrayIndex, status);
   setColor(listArea);
 };
+
 firstRun();

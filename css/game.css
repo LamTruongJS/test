@@ -77,14 +77,14 @@
 
   margin: 0.5rem 2rem;
   padding: 0.3em 0.5em;
-  border-radius: 1%;
-  border: 1px solid goldenrod;
+  border-radius: 0.25rem;
+  border: none;
   outline: none;
 
   font-size: 15px;
   color: black;
   text-align: center;
-
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: all 0.25s;
 }
 .game__win__confirm.show {
